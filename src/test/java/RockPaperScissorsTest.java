@@ -5,30 +5,18 @@ import static org.hamcrest.core.Is.is;
 
 public class RockPaperScissorsTest {
 
-    private final Object draw = new Object() {
-        @Override
-        public String toString() {
-            return "draw";
-        }
-    };
-    private Object firstHandWins = new Object() {
-        @Override
-        public String toString() {
-            return "first hand wins";
-        }
-    };
-    private Object secondHandWins = new Object() {
-        @Override
-        public String toString() {
-            return "second hand wins";
-        }
-    };
+    enum Result {
+        DRAW,
+        FIRST_HAND_WINS,
+        SECOND_HAND_WINS
+    }
+
     private Object firstHand;
     private Object secondHand;
 
     private Object playDraw() {
         if (firstHand.equals(secondHand)) {
-            return draw;
+            return Result.DRAW;
         }
         return null;
     }
@@ -41,7 +29,7 @@ public class RockPaperScissorsTest {
 
         Object result = playDraw();
 
-        assertThat(result, is(draw));
+        assertThat(result, is(Result.DRAW));
     }
 
     @Test
@@ -52,7 +40,7 @@ public class RockPaperScissorsTest {
 
         Object result = playDraw();
 
-        assertThat(result, is(draw));
+        assertThat(result, is(Result.DRAW));
     }
 
     @Test
@@ -63,7 +51,7 @@ public class RockPaperScissorsTest {
 
         Object result = playDraw();
 
-        assertThat(result, is(draw));
+        assertThat(result, is(Result.DRAW));
     }
 
     @Test
@@ -75,10 +63,10 @@ public class RockPaperScissorsTest {
 
         Object result = null;
         if (!firstHand.equals(secondHand)) {
-            result = firstHandWins;
+            result = Result.FIRST_HAND_WINS;
         }
 
-        assertThat(result, is(firstHandWins));
+        assertThat(result, is(Result.FIRST_HAND_WINS));
     }
 
     @Test
@@ -90,9 +78,9 @@ public class RockPaperScissorsTest {
 
         Object result = null;
         if (!firstHand.equals(secondHand)) {
-            result = secondHandWins;
+            result = Result.SECOND_HAND_WINS;
         }
 
-        assertThat(result, is(secondHandWins));
+        assertThat(result, is(Result.SECOND_HAND_WINS));
     }
 }
