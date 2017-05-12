@@ -17,6 +17,12 @@ public class RockPaperScissorsTest {
             return "first hand wins";
         }
     };
+    private Object secondHandWins = new Object() {
+        @Override
+        public String toString() {
+            return "second hand wins";
+        }
+    };
     private Object firstHand;
     private Object secondHand;
 
@@ -73,5 +79,20 @@ public class RockPaperScissorsTest {
         }
 
         assertThat(result, is(firstHandWins));
+    }
+
+    @Test
+    public void shouldFinishAsWinSecondHandWhenStoneMeetsPaper() {
+        Object paper = new Object();
+        Object stone = new Object();
+        firstHand = stone;
+        secondHand = paper;
+
+        Object result = null;
+        if (!firstHand.equals(secondHand)) {
+            result = secondHandWins;
+        }
+
+        assertThat(result, is(secondHandWins));
     }
 }
