@@ -14,13 +14,11 @@ public class RockPaperScissorsTest {
     private Object firstHand;
     private Object secondHand;
 
-    private Object play() {
-        Object result = null;
-
+    private Object playDraw() {
         if (firstHand.equals(secondHand)) {
-            result = draw;
+            return draw;
         }
-        return result;
+        return null;
     }
 
     @Test
@@ -29,7 +27,7 @@ public class RockPaperScissorsTest {
         firstHand = stone;
         secondHand = stone;
 
-        Object result = play();
+        Object result = playDraw();
 
         assertThat(result, is(draw));
     }
@@ -40,7 +38,7 @@ public class RockPaperScissorsTest {
         firstHand = paper;
         secondHand = paper;
 
-        Object result = play();
+        Object result = playDraw();
 
         assertThat(result, is(draw));
     }
@@ -51,7 +49,7 @@ public class RockPaperScissorsTest {
         firstHand = scissors;
         secondHand = scissors;
 
-        Object result = play();
+        Object result = playDraw();
 
         assertThat(result, is(draw));
     }
