@@ -26,4 +26,24 @@ public class RockPaperScissorsTest {
         assertThat(result, is(draw));
     }
 
+    @Test
+    public void shouldFinishAsDrawWhenPaperMeetsPaper() throws Exception {
+        Object paper = new Object();
+        Object firstHand = paper;
+        Object secondHand = paper;
+        Object result = null;
+        Object draw = new Object() {
+            @Override
+            public String toString() {
+                return "draw";
+            }
+        };
+
+        if (firstHand.equals(secondHand)) {
+            result = draw;
+        }
+
+
+        assertThat(result, is(draw));
+    }
 }
