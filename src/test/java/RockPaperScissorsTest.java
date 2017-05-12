@@ -11,6 +11,12 @@ public class RockPaperScissorsTest {
             return "draw";
         }
     };
+    private Object firstHandWins = new Object() {
+        @Override
+        public String toString() {
+            return "first hand wins";
+        }
+    };
     private Object firstHand;
     private Object secondHand;
 
@@ -33,7 +39,7 @@ public class RockPaperScissorsTest {
     }
 
     @Test
-    public void shouldFinishAsDrawWhenPaperMeetsPaper() throws Exception {
+    public void shouldFinishAsDrawWhenPaperMeetsPaper() {
         Object paper = new Object();
         firstHand = paper;
         secondHand = paper;
@@ -44,7 +50,7 @@ public class RockPaperScissorsTest {
     }
 
     @Test
-    public void shouldFinishAsDrawWhenScissorsMeetsScissors() throws Exception {
+    public void shouldFinishAsDrawWhenScissorsMeetsScissors() {
         Object scissors = new Object();
         firstHand = scissors;
         secondHand = scissors;
@@ -54,5 +60,15 @@ public class RockPaperScissorsTest {
         assertThat(result, is(draw));
     }
 
+    @Test
+    public void shouldFinishAsWinFirstHandWhenPaperMeetsStone() {
+        Object paper = new Object();
+        Object stone = new Object();
+        firstHand = paper;
+        secondHand = stone;
 
+        Object result = firstHandWins;
+
+        assertThat(result, is(firstHandWins));
+    }
 }
