@@ -1,4 +1,3 @@
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -12,8 +11,10 @@ public class RockPaperScissorsTest {
             return "draw";
         }
     };
+    private Object firstHand;
+    private Object secondHand;
 
-    private Object play(Object firstHand, Object secondHand) {
+    private Object play() {
         Object result = null;
 
         if (firstHand.equals(secondHand)) {
@@ -25,9 +26,10 @@ public class RockPaperScissorsTest {
     @Test
     public void shouldFinishAsDrawWhenStoneMeetsStone() {
         Object stone = new Object();
-        Object firstHand = stone;
-        Object secondHand = stone;
-        Object result = play(firstHand, secondHand);
+        firstHand = stone;
+        secondHand = stone;
+
+        Object result = play();
 
         assertThat(result, is(draw));
     }
@@ -35,9 +37,10 @@ public class RockPaperScissorsTest {
     @Test
     public void shouldFinishAsDrawWhenPaperMeetsPaper() throws Exception {
         Object paper = new Object();
-        Object firstHand = paper;
-        Object secondHand = paper;
-        Object result = play(firstHand, secondHand);
+        firstHand = paper;
+        secondHand = paper;
+
+        Object result = play();
 
         assertThat(result, is(draw));
     }
@@ -45,9 +48,10 @@ public class RockPaperScissorsTest {
     @Test
     public void shouldFinishAsDrawWhenScissorsMeetsScissors() throws Exception {
         Object scissors = new Object();
-        Object firstHand = scissors;
-        Object secondHand = scissors;
-        Object result = play(firstHand, secondHand);
+        firstHand = scissors;
+        secondHand = scissors;
+
+        Object result = play();
 
         assertThat(result, is(draw));
     }
