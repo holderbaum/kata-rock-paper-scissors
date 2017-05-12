@@ -13,16 +13,21 @@ public class RockPaperScissorsTest {
         }
     };
 
-    @Test
-    public void shouldFinishAsDrawWhenStoneMeetsStone() {
-        Object stone = new Object();
-        Object firstHand = stone;
-        Object secondHand = stone;
+    private Object play(Object firstHand, Object secondHand) {
         Object result = null;
 
         if (firstHand.equals(secondHand)) {
             result = draw;
         }
+        return result;
+    }
+
+    @Test
+    public void shouldFinishAsDrawWhenStoneMeetsStone() {
+        Object stone = new Object();
+        Object firstHand = stone;
+        Object secondHand = stone;
+        Object result = play(firstHand, secondHand);
 
         assertThat(result, is(draw));
     }
@@ -32,11 +37,7 @@ public class RockPaperScissorsTest {
         Object paper = new Object();
         Object firstHand = paper;
         Object secondHand = paper;
-        Object result = null;
-
-        if (firstHand.equals(secondHand)) {
-            result = draw;
-        }
+        Object result = play(firstHand, secondHand);
 
         assertThat(result, is(draw));
     }
@@ -46,11 +47,7 @@ public class RockPaperScissorsTest {
         Object scissors = new Object();
         Object firstHand = scissors;
         Object secondHand = scissors;
-        Object result = null;
-
-        if (firstHand.equals(secondHand)) {
-            result = draw;
-        }
+        Object result = play(firstHand, secondHand);
 
         assertThat(result, is(draw));
     }
