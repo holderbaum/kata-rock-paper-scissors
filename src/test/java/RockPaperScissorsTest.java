@@ -67,7 +67,10 @@ public class RockPaperScissorsTest {
         firstHand = paper;
         secondHand = stone;
 
-        Object result = firstHandWins;
+        Object result = null;
+        if (!firstHand.equals(secondHand)) {
+            result = firstHandWins;
+        }
 
         assertThat(result, is(firstHandWins));
     }
