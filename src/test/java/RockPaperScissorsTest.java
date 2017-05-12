@@ -5,23 +5,24 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 public class RockPaperScissorsTest {
+
+    private final Object draw = new Object() {
+        @Override
+        public String toString() {
+            return "draw";
+        }
+    };
+
     @Test
     public void shouldFinishAsDrawWhenStoneMeetsStone() {
         Object stone = new Object();
         Object firstHand = stone;
         Object secondHand = stone;
         Object result = null;
-        Object draw = new Object() {
-            @Override
-            public String toString() {
-                return "draw";
-            }
-        };
 
         if (firstHand.equals(secondHand)) {
             result = draw;
         }
-
 
         assertThat(result, is(draw));
     }
@@ -32,17 +33,10 @@ public class RockPaperScissorsTest {
         Object firstHand = paper;
         Object secondHand = paper;
         Object result = null;
-        Object draw = new Object() {
-            @Override
-            public String toString() {
-                return "draw";
-            }
-        };
 
         if (firstHand.equals(secondHand)) {
             result = draw;
         }
-
 
         assertThat(result, is(draw));
     }
@@ -53,17 +47,10 @@ public class RockPaperScissorsTest {
         Object firstHand = scissors;
         Object secondHand = scissors;
         Object result = null;
-        Object draw = new Object() {
-            @Override
-            public String toString() {
-                return "draw";
-            }
-        };
 
         if (firstHand.equals(secondHand)) {
             result = draw;
         }
-
 
         assertThat(result, is(draw));
     }
